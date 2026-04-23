@@ -1,4 +1,11 @@
 // sim.js
+// 
+// This file contains mathematical derivations of input shaper algorithms originally
+// developed by Kevin O'Connor for the Klipper firmware (https://github.com/Klipper3d/klipper),
+// which is licensed under the GNU General Public License v3.0 (GPLv3).
+//
+// This project is licensed under the GNU General Public License v3.0 (GPLv3).
+// See the LICENSE file for details.
 
 // Klipper Input Shaper Definitions
 const SHAPERS = {

@@ -41,4 +41,7 @@ If you apply an Input Shaper, the straight lines will remain Cyan, but the corne
 Curious about how the simulator perfectly subtracts the shaper's group delay and the physical viscous tracking lag? Check out [PHYSICS.md](PHYSICS.md) for an in-depth breakdown of the math driving the visualization.
 
 ## License
-MIT License
+This project is licensed under the GNU General Public License v3.0 (GPLv3). See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements / Attribution
+* **Klipper**: The input shaper algorithms and logic are mathematically derived from the [Klipper](https://github.com/Klipper3d/klipper) firmware by Kevin O'Connor, which is also licensed under the GPLv3.
