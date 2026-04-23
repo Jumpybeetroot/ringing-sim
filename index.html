@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalico Print Surface Simulator</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="ph ph-cube"></i>
+                <h2>SurfaceSim</h2>
+            </div>
+            
+            <details class="control-section" open>
+                <summary><h3><i class="ph ph-rocket-launch"></i> Kinematics<i class="ph ph-caret-down" style="margin-left: auto;"></i></h3></summary>
+                
+                <div class="control-group">
+                    <label for="print-speed">
+                        <span>Print Speed</span>
+                        <span id="speed-val" class="value-display">350 mm/s</span>
+                    </label>
+                    <input type="range" id="print-speed" min="20" max="1500" step="10" value="350">
+                </div>
+                
+                <div class="control-group">
+                    <label for="accel">
+                        <span>Acceleration</span>
+                        <span id="accel-val" class="value-display">15000 mm/s²</span>
+                    </label>
+                    <input type="range" id="accel" min="500" max="250000" step="500" value="15000">
+                </div>
+
+                <div class="control-group">
+                    <label for="scv">
+                        <span>Square Corner Velocity</span>
+                        <span id="scv-val" class="value-display">5 mm/s</span>
+                    </label>
+                    <input type="range" id="scv" min="1" max="20" step="1" value="5">
+                </div>
+            </details>
+
+            <details class="control-section" open>
+                <summary><h3><i class="ph ph-wrench"></i> Mechanics<i class="ph ph-caret-down" style="margin-left: auto;"></i></h3></summary>
+                
+                <div class="control-group">
+                    <label for="mech-freq">
+                        <span>Resonant Frequency</span>
+                        <span id="freq-val" class="value-display">45 Hz</span>
+                    </label>
+                    <input type="range" id="mech-freq" min="15" max="250" step="1" value="45">
+                </div>
+
+                <div class="control-group">
+                    <label for="damping">
+                        <span>Damping Ratio (&zeta;)</span>
+                        <span id="damping-val" class="value-display">0.10</span>
+                    </label>
+                    <input type="range" id="damping" min="0.02" max="0.30" step="0.01" value="0.10">
+                </div>
+                <div class="control-group">
+                    <label for="peak-width">
+                        <span>Peak Width</span>
+                        <span id="width-val" class="value-display">5 Hz</span>
+                    </label>
+                    <input type="range" id="peak-width" min="0" max="30" step="1" value="5">
+                    <div style="font-size: 0.75rem; color: #8aa1ff; margin-top: 0.5rem; line-height: 1.4; display: flex; gap: 6px;">
+                        <i class="ph ph-info" style="font-size: 1rem; margin-top: 1px;"></i>
+                        <span><strong>Note:</strong> Increasing Peak Width mathematically smears the drawn path to show a larger error margin. This represents the physical <strong>envelope of uncertainty</strong> created by a wide resonance band.</span>
+                    </div>
+                </div>
+            </details>
+
+            <details class="control-section" open>
+                <summary><h3><i class="ph ph-wave-sine"></i> Input Shaper<i class="ph ph-caret-down" style="margin-left: auto;"></i></h3></summary>
+                
+                <div class="control-group">
+                    <label for="shaper-type">Shaper Algorithm</label>
+                    <select id="shaper-type">
+                        <option value="none" selected>None (Raw)</option>
+                        <option value="zv">ZV</option>
+                        <option value="mzv">MZV</option>
+                        <option value="ei">EI</option>
+                        <option value="2hump_ei">2HUMP_EI</option>
+                        <option value="3hump_ei">3HUMP_EI</option>
+                    </select>
+                </div>
+                
+                <div class="control-group" id="shaper-freq-group">
+                    <label for="shaper-freq">
+                        <span>Shaper Frequency</span>
+                        <span id="shaper-freq-val" class="value-display">45 Hz</span>
+                    </label>
+                    <input type="range" id="shaper-freq" min="15" max="250" step="1" value="45">
+                </div>
+            </details>
+            
+            <details class="control-section" open>
+                <summary><h3><i class="ph ph-eye"></i> Visualization<i class="ph ph-caret-down" style="margin-left: auto;"></i></h3></summary>
+                
+                <div class="control-group">
+                    <label for="view-mode">View Mode</label>
+                    <select id="view-mode">
+                        <option value="2d" selected>Top-Down (2D)</option>
+                        <option value="3d">Stacked Wall (2.5D)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="exaggerate">
+                        <span>Exaggerate Error</span>
+                        <span id="exaggerate-val" class="value-display">1x</span>
+                    </label>
+                    <input type="range" id="exaggerate" min="1" max="10" step="1" value="1">
+                </div>
+
+                <div class="control-group">
+                    <label for="heatmap-max">
+                        <span>Heatmap Max Error</span>
+                        <span id="heatmap-max-val" class="value-display">0.10 mm</span>
+                    </label>
+                    <input type="range" id="heatmap-max" min="0.01" max="0.50" step="0.01" value="0.10">
+                </div>
+            </details>
+            
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-nav" style="display: flex; justify-content: space-between; align-items: center; background: rgba(25, 28, 41, 0.6); padding: 12px 20px; border-radius: 8px; margin-bottom: 15px;">
+                <div>
+                    <h1 style="margin: 0; font-size: 1.2rem; color: #fff;">Simulated Extrusion Result</h1>
+                    <p style="margin: 4px 0 0; font-size: 0.85rem; color: var(--text-secondary);">Visualize Ringing & Corner Smoothing Artifacts</p>
+                </div>
+            </header>
+            
+            <div class="canvas-wrapper">
+                <canvas id="simCanvas"></canvas>
+            </div>
+            
+            <div class="bottom-panels" style="margin-top: 24px;">
+                <div class="panel">
+                    <h3><i class="ph ph-info"></i> How it Works</h3>
+                    <p>This simulator uses a time-domain numerical integrator to model the 3D printer as a mass-spring system. It generates a kinematic toolpath (decelerating into a corner, turning, and accelerating away), passes that target through Klipper's exact Input Shaper time-delay algorithms, and then simulates the physical toolhead's attempt to follow that shaped command.</p>
+                </div>
+                <div class="panel">
+                    <h3><i class="ph ph-warning-circle"></i> Understanding the Visualization</h3>
+                    <p><strong>Top-Down Trace:</strong> An overhead view of the nozzle path. The dashed line is the ideal G-code path.</p>
+                    <p style="margin-top: 8px;"><strong>Peak Width:</strong> If Peak Width > 0, the simulator draws multiple lines to represent a "blurry" band of different vibration frequencies happening simultaneously. Narrow shapers (like MZV) will fail to cancel all the lines, while wide shapers (like EI) will pull them all together.</p>
+                    <p style="margin-top: 8px;"><strong>Corner Smoothing:</strong> Notice how aggressive shapers (like 3HUMP) eliminate ringing but "round off" the sharp corner by cutting inside the ideal path.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="sim.js"></script>
+    <script src="render.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
