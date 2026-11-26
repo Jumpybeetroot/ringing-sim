@@ -40,6 +40,9 @@ If you apply an Input Shaper, the straight lines will remain Cyan, but the corne
 ## Advanced Math & Physics
 Curious about how the simulator perfectly subtracts the shaper's group delay and the physical viscous tracking lag? Check out [PHYSICS.md](PHYSICS.md) for an in-depth breakdown of the math driving the visualization.
 
+## Support
+If this simulator or any of my other 3D printing tools have helped you out, consider [supporting my work on Ko-fi](https://ko-fi.com/jumpybeetroot).
+
 ## License
 This project is licensed under the GNU General Public License v3.0 (GPLv3). See the [LICENSE](LICENSE) file for details.
 
