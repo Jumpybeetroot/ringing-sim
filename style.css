@@ -384,3 +384,33 @@ canvas {
   background: rgba(255, 94, 91, 0.16);
   border-color: #FF5E5B;
 }
+
+.deprecation-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: #fde68a;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.deprecation-banner i {
+  font-size: 18px;
+  flex-shrink: 0;
+  color: #fbbf24;
+}
+
+.deprecation-banner a {
+  color: #00f0ff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.deprecation-banner a:hover {
+  color: #7dd3fc;
+}

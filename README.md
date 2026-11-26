@@ -2,6 +2,11 @@
 
 [![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20my%20work-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/jumpybeetroot)
 
+> [!WARNING]
+> **No longer actively updated — superseded by [PrintSim](https://github.com/Jumpybeetroot/PrintSim).**
+>
+> This repository will no longer receive updates. Development has moved to **[PrintSim](https://github.com/Jumpybeetroot/PrintSim)**, which is a much better and more complete multiphysics 3D printer simulator combining full 3D structural & modal FEA, coupled belt/motor/frame dynamics, Klipper input-shaper PSD calibration & ADXL CSV auto-fit, time-domain corner/ballbar ringing simulation, hotend thermal/flow physics, and an interactive 3D Studio.
+
 A high-performance, browser-based diagnostic tool for visualizing mechanical vibration (ringing) and input shaper smoothing in 3D printers. 
 
 ## Overview
