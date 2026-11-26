@@ -1,5 +1,7 @@
 # Kalico Ringing Simulator
 
+[![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20my%20work-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/jumpybeetroot)
+
 A high-performance, browser-based diagnostic tool for visualizing mechanical vibration (ringing) and input shaper smoothing in 3D printers. 
 
 ## Overview

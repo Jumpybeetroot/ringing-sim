@@ -363,3 +363,24 @@ canvas {
         grid-template-columns: 1fr;
     }
 }
+
+.kofi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: rgba(31, 36, 55, 0.9);
+  border: 1px solid rgba(255, 94, 91, 0.55);
+  color: #f8fafc;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.kofi-pill:hover {
+  background: rgba(255, 94, 91, 0.16);
+  border-color: #FF5E5B;
+}
